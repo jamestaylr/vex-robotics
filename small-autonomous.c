@@ -18,16 +18,96 @@ void main()
 	while(true)
 	{
 
+		// dunking preload on closest pole
+		raiseArm(POLE_HEIGHT_SMALL);
+
+		moveForward();
+		wait(2);
+		driveReset();
+
+		armLower();
+		wait(2);
+		armReset();
+
+		clawOpen();
+
+		// pick up cube to the right
+
+		turnRight(90);
+		lowerArm(CUBE_HEIGHT);
+
+		moveForward();
+		wait(4);
+		driveReset();
+
+		clawClose();
+
+		// score cube on high goal
+
+		moveForward();
+		wait(1);
+		driveReset();
+
+		turnLeft();
+
+		raiseArm(POLE_HEIGHT_LARGE);
+
+		moveForward();
+		wait(2);
+		driveReset();
+
+		armLower();
+		wait(2);
+		armReset();
+
+		clawOpen();
+
+		// grab cube near skyrise
+
+		turnLeft(135);
+
+		armLower(CUBE_HEIGHT);
+
+		moveForward();
+		wait(1);
+		driveReset();
+
+		clawClose();
+
+		turnRight(135);
+
+		// score cube on high goal
+
+		moveForward();
+		wait(1);
+		driveReset();
+
+		raiseArm(POLE_HEIGHT_LARGE);
+
+		moveForward();
+		wait(0.5);
+		driveReset();
+
+		armLower();
+		wait(2);
+		armReset();
+
+		clawOpen();
 
 	}
 
 }
 
-// ~ Initialization Code ......................................................
+// ~ Global Definitions .......................................................
 
 void setup()
 {
 
+}
+
+void wait(int seconds)
+{
+	wait1Msec(seconds * 1000);
 }
 
 // ~ Driving Definitions ......................................................
@@ -100,10 +180,14 @@ void armReset()
 void clawOpen()
 {
 
+	wait(2);
+	clawReset();
 }
 void clawClose()
 {
 
+	wait(2);
+	clawReset();
 }
 
 void clawReset()
