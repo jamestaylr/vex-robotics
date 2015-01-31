@@ -47,6 +47,9 @@ task main() {
 
 // ~ Global Definitions .......................................................
 
+int SERVO_SPEED = 63;
+
+
 void setup() {
 	nMotorEncoder[leftDriveMotor] = 0;
 	nMotorEncoder[rightDriveMotor] = 0;
@@ -70,20 +73,20 @@ void turn(int angle) // Rotational Movement. Postive angles turn left while nega
 
 	if (angle < 0) {
 
-		move(63, -63, -distance);
+		move(SERVO_SPEED, -SERVO_SPEED, -distance);
 	} else {
-		move(-63, 63, distance);
+		move(-SERVO_SPEED, SERVO_SPEED, distance);
 	}
 }
 
 void moveForward(int distance) {
 
-	move(63, 63, distance);
+	move(SERVO_SPEED, SERVO_SPEED, distance);
 }
 
 void moveBackward(int distance) {
 
-	move(-63, -63, distance);
+	move(-SERVO_SPEED, -SERVO_SPEED, distance);
 }
 
 void move(int rightDrive, int leftDrive int distance) {
@@ -109,9 +112,9 @@ int previous_height;
 void arm(int height) {
 
 	if (height > previous_height) {
-		arm(32, 32, height - previous_height);
+		arm(SERVO_SPEED, SERVO_SPEED, height - previous_height);
 	} else {
-		arm(-32, -32, previous_height - height);
+		arm(-SERVO_SPEED, -SERVO_SPEED, previous_height - height);
 	}
 }
 
@@ -134,13 +137,13 @@ void arm(int rightArm, int leftArm, int delta_height) {
 
 void clawOpen() {
 
-	motor[clawMotor] = -63;
+	motor[clawMotor] = -SERVO_SPEED;
 	wait(2);
 	motor[clawMotor] = 0;
 }
 void clawClose() {
 
-	motor[clawMotor] = 63;
+	motor[clawMotor] = SERVO_SPEED;
 	wait(2);
 	motor[clawMotor] = 0;
 }
