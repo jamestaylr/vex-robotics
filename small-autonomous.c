@@ -63,16 +63,17 @@ void wait(int seconds) {
 
 // ~ Driving Definitions ......................................................
 
-void turnRight(int angle) {
+void turn(int angle) // Rotational Movement. Postive angles turn left while negative angles turn right.
+{
+	// Write a conversion equation for the angle to distance. This is so the code for move() can still be used. Current one is temporary
+	int distance = angle;
 
-	// TODO angle to distance conversion
-	move(63, -63, distance);
-}
+	if (angle < 0) {
 
-void turnLeft(int angle) {
-
-	// TODO angle to distance conversion
-	move(-63, 63, distance);
+		move(63, -63, -distance);
+	} else {
+		move(-63, 63, distance);
+	}
 }
 
 void moveForward(int distance) {
@@ -119,7 +120,7 @@ void arm(int rightArm, int leftArm, int delta_height) {
 	nMotorEncoder[rightArmMotor] = 0;
 
 	while (nMotorEncoder[rightArmMotor] < delta_height * 10)
-	// TODO the distance conversion goes here
+// TODO the distance conversion goes here
 	{
 		motor[rightArmMotor] = rightArm;
 		motor[leftArmMotor] = leftArm;
