@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../small-autonomous.c 
+../small-autonomous.c \
+../small-manual.c 
 
 OBJS += \
-./small-autonomous.o 
+./small-autonomous.o \
+./small-manual.o 
 
 C_DEPS += \
-./small-autonomous.d 
+./small-autonomous.d \
+./small-manual.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

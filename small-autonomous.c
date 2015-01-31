@@ -49,7 +49,6 @@ task main() {
 
 int SERVO_SPEED = 63;
 
-
 void setup() {
 	nMotorEncoder[leftDriveMotor] = 0;
 	nMotorEncoder[rightDriveMotor] = 0;
@@ -123,8 +122,8 @@ void arm(int rightArm, int leftArm, int delta_height) {
 	nMotorEncoder[rightArmMotor] = 0;
 
 	while (nMotorEncoder[rightArmMotor] < delta_height * 10)
-// TODO the distance conversion goes here
 	{
+		// TODO the distance conversion goes here
 		motor[rightArmMotor] = rightArm;
 		motor[leftArmMotor] = leftArm;
 	}
