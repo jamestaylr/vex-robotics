@@ -19,18 +19,19 @@ int SERVO_SPEED = 63;
 
 task main() {
 
-	int threshold = 25;
+	int threshold = 10;
 
 	while (true) {
 
 		// Driving control
 
-		if (vexRT[Ch3] > threshold || vexRT[Ch3] < -threshold) {
+		if (abs(vexRT[Ch3]) > threshold) {
 			motor[leftMotor] = vexRT[Ch3];
 		} else {
 			motor[leftMotor] = 0;
 		}
-		if (vexRT[Ch2] > threshold || vexRT[Ch2] < -threshold) {
+
+		if (abs(vexRT[Ch2]) > threshold) {
 			motor[rightMotor] = vexRT[Ch2];
 		} else {
 			motor[rightMotor] = 0;
