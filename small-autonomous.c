@@ -102,16 +102,16 @@ void move(int rightDrive, int leftDrive int distance) {
 	motor[leftDriveMotor] = 0;
 }
 
-// ~ Arm Definitions ..........................................................
+// ~ Lift Definitions .........................................................
 
 int previous_height;
 
 void arm(int height) {
 
 	if (height > previous_height) {
-		arm(127, 127, height - previous_height);
+		arm(32, 32, height - previous_height);
 	} else {
-		arm(-127, -127, previous_height - height);
+		arm(-32, -32, previous_height - height);
 	}
 }
 
@@ -134,13 +134,13 @@ void arm(int rightArm, int leftArm, int delta_height) {
 
 void clawOpen() {
 
-	motor[clawMotor] = -127;
+	motor[clawMotor] = -63;
 	wait(2);
 	motor[clawMotor] = 0;
 }
 void clawClose() {
 
-	motor[clawMotor] = 127;
+	motor[clawMotor] = 63;
 	wait(2);
 	motor[clawMotor] = 0;
 }
